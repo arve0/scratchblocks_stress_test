@@ -1,0 +1,151 @@
+<html>
+  <head>
+    <title>Stress test canvas</title>
+  </head>
+  <body>
+
+<pre id="code">
+define item (idx) of (list)
+set [return v] to ((join (list)(idx)) of [stage v])
+
+define length of (list)
+set [return v] to ((join (list)[.len]) of [stage v])
+
+define replace item (idx) of (list) with (thing)
+set (join (list)(idx)) to (thing)
+
+define add (thing) to (list)
+change (join (list)[.len]) by (1)
+set (join (list)((join (list)[.len]) of [stage v])) to (thing)
+
+define insert (thing) at (idx) of (list)
+length of (list) :: custom
+set [temp idx v] to (return)
+change (join (list)[.len]) by (1)
+repeat ((temp idx) - (idx))
+  set (join (list)((temp idx) + (1))) to ((join (list)(temp idx)) of [stage v])
+  change [return v] by (-1)
+replace item (idx) of (list) with (thing) :: custom
+
+define delete (idx) of (list)
+change (join (list)[.len]) by (-1)
+set [temp idx v] to (idx)
+repeat (((join (list)[.len]) of [stage v]) - (idx))
+  set (join (list)(temp idx)) to ((join (list)((temp idx) + (1))) of [stage v])
+  change [temp idx v] by (1)
+
+define (list) contains (thing)
+set [temp idx v] to (0)
+set [return v] to [false]
+repeat until &lt;&lt;(return) = [true]&gt; or &lt;(temp idx) = ((join (list)[.len]) of [stage v])&gt;&gt;
+  change [temp idx v] by (1)
+  if &lt;((join (list)(temp idx)) of [stage v]) = (thing)&gt;
+    set [return v] to [true]
+
+
+turn ccw (10) degrees
+go to [ v]
+set x to (10)
+set y to (10)
+say [hi]
+think [hi]
+show
+hide
+switch costume to [ v]
+switch backdrop to [ v]
+set [ v] effect to (0)
+clear graphic effects
+play sound [ v]
+play sound [ v] until done
+stop all sounds
+play drum ( v) for (0.2) beats
+set instrument to ( v)
+set volume to () %
+(volume)
+set tempo to () bpm
+(tempo)
+clear
+stamp
+pen down
+pen up
+set pen color to [#ff0088]
+set pen color to ()
+set pen shade to ()
+set pen size to ()
+when green flag clicked
+
+when backdrop switches to [ v]
+
+
+when I receive [ v]
+
+broadcast [ v]
+if &lt;&gt; then
+
+end
+repeat until &lt;&gt;
+
+end
+stop [ v]
+
+when I start as a clone
+
+create clone of [ v]
+delete this clone
+&lt;touching [ v] ?&gt;
+&lt;touching color [#ff0088] ?&gt;
+&lt;color [#00ff00] is touching [#0000ff] ?&gt;
+ask [] and wait
+(answer)
+&lt;key [ v] pressed?&gt;
+&lt;mouse down?&gt;
+(mouse x)
+(mouse y)
+(loudness)
+(video [ v] on [  v])
+turn video [() v]
+set video transparency to () %
+(timer)
+reset timer
+([ v] of [  v])
+(current [ v])
+(days since 2000)
+(username)
+(() - (0))
+(() * (0))
+&lt;[] &lt; [ ]&gt;
+&lt;[] = [ ]&gt;
+&lt;&lt;&gt; and &lt; &gt;&gt;
+&lt;&lt;&gt; or &lt; &gt;&gt;
+&lt;not &lt;&gt;&gt;
+(() mod (0))
+(round ())
+([ v] of (9))
+(var)
+set [ v] to [ ]
+show variable [ v]
+hide variable [ v]
+define custum
+
+
+add [hi] to [list] :: custom
+set [list1 v] to [bye]
+item (1) of [list] :: custom
+say (return) // bye!?!??!?!?!!?
+
+
+set [list1 v] to [bye]
+
+
+add [hi] to [list v]
+set [list1 v] to [bye]
+say (item (1) of [list v])
+</pre>
+    <script src="scratchblocks.min.js"></script>
+    <script>
+      var code = document.getElementById('code');
+      var svg = scratchblocks(code.innerHTML);
+      code.innerHTML = svg;
+    </script>
+  </body>
+</html>
